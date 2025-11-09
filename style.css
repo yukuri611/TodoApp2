@@ -42,6 +42,21 @@ li {
     color: #aaa;
 }
 
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.button-container {
+    display: flex;
+    gap: 5px;
+}
 
 .edit-btn {
     margin-left: auto;
