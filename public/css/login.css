@@ -1,0 +1,64 @@
+/* --- ログインフォーム --- */
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+#login-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 24px 32px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+main h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+#login-form div {
+    margin-bottom: 16px;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#login-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#login-form button:hover {
+    background-color: #0056b3;
+}

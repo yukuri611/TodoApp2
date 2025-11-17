@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録 - My Todo App</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>My Todo App</h1>
+            <nav>
+                <a href="index.html">Todoリスト</a>
+                <a href="login.html">ログイン</a>
+                <a href="register.html">新規登録</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <form id="register-form">
+            <h2>新規登録</h2>
+            <div>
+                <label for="register-username">ユーザー名:</label>
+                <input type="text" id="register-username" required>
+            </div>
+            <div>
+                <label for="register-password">パスワード:</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <button type="submit">登録</button>
+            <p id="register-message"></p>
+        </form>
+    </main>
+
+    <script src="js/register.js"></script>
+</body>
+
+</html>

@@ -5,38 +5,22 @@ const authContainer = document.getElementById("auth-container");
 const todoContainer = document.getElementById('todo-container');
 const logoutBtn = document.getElementById('logout-btn');
 
-const registerForm = document.getElementById('register-form');
-const registerUsername = document.getElementById('register-username');
-const registerPassword = document.getElementById('register-password');
-const registerMessage = document.getElementById('register-message');
+const inputEl = document.getElementById("todo-input");
+const addBtn = document.getElementById("add-btn");
 
-const loginForm = document.getElementById('login-form');
-const loginUsername = document.getElementById('login-username');
-const loginPassword = document.getElementById('login-password');
-const loginMessage = document.getElementById('login-message');
 
-async function handleLogin(username, password) {
-    const response = await fetch(`${API_BASE_URL}/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
-    });
-    if (response.ok) {
-        const { token } = await response.json();
-        localStorage.setItem("authToken", token);
-        showTodoApp();
-    } else {
-        loginMessage.textContent = "ログインに失敗しました";
-    }
+// move to login page
+function moveToLogin() {
+    window.location.href = "login.html";
 }
+
 
 // Load todos from server
 async function loadTodos() {
     const token = localStorage.getItem("authToken");
     if (!token) {
-        showAuthUI();
+        alert("ログインしてください");
+        moveToLogin();
         return [];
     }
 
@@ -52,7 +36,7 @@ async function loadTodos() {
         if (response.status === 401 || response.status === 403) {
             alert("セッションが切れました。再度ログインしてください。");
             localStorage.removeItem('authToken');
-            showAuthUI();
+            moveToLogin();
         }
         return [];
     }
@@ -69,7 +53,7 @@ async function loadTodos() {
 async function handleToggle(todo, isDone) {
     const token = localStorage.getItem("authToken");
     if (!token) {
-        showAuthUI();
+        moveToLogin();
         return;
     }
 
@@ -95,7 +79,7 @@ async function handleEdit(todo) {
 
     const token = localStorage.getItem("authToken");
     if (!token) {
-        showAuthUI();
+        moveToLogin();
         return;
     }
 
@@ -120,7 +104,7 @@ async function handleDelete(todo) {
 
     const token = localStorage.getItem("authToken");
     if (!token) {
-        showAuthUI();
+        moveToLogin();
         return;
     }
 
@@ -140,7 +124,7 @@ async function handleDelete(todo) {
 function handleApiError(response) {
     if (response.status === 401 || response.status === 403) {
         alert("セッションが切れました。再度ログインしてください。");
-        showAuthUI(); // 認証画面に戻す
+        moveToLogin(); // 認証画面に戻す
     } else {
         alert("エラーが発生しました。");
     }
@@ -174,7 +158,7 @@ async function renderTodos() {
         //edit button
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-btn");
-        editBtn.textContent = "編集";
+        editBtn.textContent = "修正";
         editBtn.addEventListener("click", () => handleEdit(todo));
 
         //delete button
@@ -223,9 +207,6 @@ async function addTodo() {
     }
 }
 
-const inputEl = document.getElementById("todo-input");
-const addBtn = document.getElementById("add-btn");
-
 addBtn.addEventListener('click', addTodo);
 inputEl.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
@@ -233,64 +214,13 @@ inputEl.addEventListener('keypress', function (event) {
     }
 });
 
-
-registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username = registerUsername.value;
-    const password = registerPassword.value;
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-        const data = await response.json();
-
-        if (response.ok) {
-            registerMessage.textContent = "登録が完了しました。ログインしてください。";
-            registerMessage.style.color = 'green';
-            registerForm.reset();
-        } else {
-            registerMessage.textContent = data.message;
-            registerMessage.style.color = 'red';
-        }
-    } catch (err) {
-        registerMessage.textContent = "登録中にエラーが発生しました。";
-    }
-});
-
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    loginMessage.textContent = "";
-    handleLogin(loginUsername.value, loginPassword.value);
-});
-
+// logout button
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('authToken');
-    showAuthUI();
+    alert("ログアウトしました。");
+    moveToLogin();
 });
 
 
-function showTodoApp() {
-    authContainer.style.display = 'none';
-    todoContainer.style.display = 'block';
-    renderTodos();
-}
 
-function showAuthUI() {
-    authContainer.style.display = 'block';
-    todoContainer.style.display = 'none';
-    document.getElementById("todo-list").innerHTML = "";
-}
-
-function initializeApp() {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-        showTodoApp();
-    } else {
-        showAuthUI();
-    }
-}
-
-initializeApp();
+renderTodos();

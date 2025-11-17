@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - My Todo App</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>My Todo App</h1>
+            <nav>
+                <a href="todo.html">Todoリスト</a>
+                <a href="login.html">ログイン</a>
+                <a href="register.html">新規登録</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <form id="login-form">
+            <h2>ログイン</h2>
+            <div>
+                <label for="login-username">ユーザー名:</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div>
+                <label for="login-password">パスワード:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit">ログイン</button>
+        </form>
+    </main>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>

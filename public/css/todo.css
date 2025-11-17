@@ -1,0 +1,157 @@
+/* --- todo.css (Todoページ専用) --- */
+
+main#todo-container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 24px 32px;
+    max-width: 700px;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+main#todo-container h1 {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+#logout-btn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#logout-btn:hover {
+    background-color: #5a6268;
+}
+
+hr {
+    display: none;
+}
+
+.input-area {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+#todo-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 8px;
+    box-sizing: border-box;
+}
+
+#todo-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#add-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+#add-btn:hover {
+    background-color: #0056b3;
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 5px;
+    transition: background-color 0.2s;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+.done-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.edit-btn,
+.delete-btn {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.edit-btn {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* --- ボタンホバー --- */
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.7;
+}
