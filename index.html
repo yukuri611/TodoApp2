@@ -4,20 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div id="auth-container">
+        <form id="register-form">
+            <h2>新規登録</h2>
+            <div>
+                <label for="register-username">ユーザー名:</label>
+                <input type="text" id="register-username" required>
+            </div>
+            <div>
+                <label for="register-password">パスワード:</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <button type="submit">登録</button>
+            <p id="register-message" class="message"></p>
+        </form>
 
-    <h1>Todo List</h1>
-    <div class="input-area">
-        <input type="text" id="todo-input" placeholder="やることを入力" />
-        <button id="add-btn">追加</button>
+        <hr>
+
+        <form id="login-form">
+            <h2>ログイン</h2>
+            <div>
+                <label for="login-username">ユーザー名:</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div>
+                <label for="login-password">パスワード:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit">ログイン</button>
+            <p id="login-message" class="message"></p>
+        </form>
     </div>
-    <ul id="todo-list"></ul>
 
-    <script src="index.js"></script>
+    <div id="todo-container" style="display:none;">
+        <h1>Todo List</h1>
+        <button id="logout-btn">ログアウト</button>
+
+        <hr>
+
+        <div class="input-area">
+            <input type="text" id="todo-input" placeholder="やることを入力" />
+            <button id="add-btn">追加</button>
+        </div>
+        <ul id="todo-list"></ul>
+
+        <script src="index.js"></script>
+    </div>
 
 </body>
 
